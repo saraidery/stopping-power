@@ -85,23 +85,6 @@ class TesteTReader:
 
         os.remove(file_name_out)
 
-    def test_mean_excitation_energy_X_1(self):
-
-        reference = np.array([21.352776829336378, 3.0611817934812695])
-
-        file_path = os.path.dirname(__file__)
-        file_name = os.path.join(file_path, "./H2_20")
-        eT_reader = eTLanczosReader(file_name)
-
-        file_name_out = os.path.join(file_path, "output")
-        eT_reader.generate_component_file(file_name_out, component="X")
-
-        mean = MeanExcitationEnergy(f"{file_name_out}_X")
-
-        computed = np.array([mean.I0, mean.ln_I0])
-        assert np.allclose(reference, computed)
-
-        os.remove(f"{file_name_out}_X")
 
     def test_mean_excitation_energy_X_2(self):
 

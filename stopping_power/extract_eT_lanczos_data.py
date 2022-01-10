@@ -48,20 +48,6 @@ class eTLanczosReader:
     def _write_file_header(self, file, units):
         file.write(f"Excitation energy [{units}] Oscilator strengths\n")
 
-    def generate_component_file(self, file_name, component, units="eV"):
-
-        if component in component:
-
-            file = open(f"{file_name}_{component}", "w")
-            self._write_file_header(file, units)
-
-            e, f = self._read_component(component, units)
-            self._write_component_data(file, np.c_[e, f])
-
-            file.close()
-        else:
-            print(f"Component [{component}] is not defined")
-
     def generate_file(self, file_name, units="eV"):
 
         file = open(file_name, "w")
