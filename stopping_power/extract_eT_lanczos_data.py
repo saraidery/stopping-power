@@ -23,7 +23,6 @@
 import numpy as np
 import os
 
-
 class eTLanczosReader:
     def __init__(self, file_name, components=["X", "Y", "Z"]):
 
@@ -34,7 +33,7 @@ class eTLanczosReader:
         component = component.strip()
         component = component.lstrip()
 
-        n, e_atomic_Re, e_atomic_Im, e_eV_Re, e_eV_Im, f = np.loadtxt(
+        n, e_eV_Re, e_eV_Im, e_atomic_Re, e_atomic_Im, f = np.loadtxt(
             f"{self.file_name}_{component}", skiprows=1, unpack=True
         )
 
@@ -49,7 +48,7 @@ class eTLanczosReader:
     def _write_file_header(self, file, units):
         file.write(f"Excitation energy [{units}] Oscilator strengths\n")
 
-    def generate_component_file(self, file_name, component, units="atomic"):
+    def generate_component_file(self, file_name, component, units="eV"):
 
         if component in component:
 
@@ -63,7 +62,7 @@ class eTLanczosReader:
         else:
             print(f"Component [{component}] is not defined")
 
-    def generate_file(self, file_name, units="atomic"):
+    def generate_file(self, file_name, units="eV"):
 
         file = open(file_name, "w")
         self._write_file_header(file, units)
