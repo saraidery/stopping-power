@@ -112,9 +112,9 @@ class TesteTReader:
         eT_reader = eTLanczosReader(file_name, components=["Z"])
 
         file_name_out = os.path.join(file_path, "output")
-        eT_reader.generate_component_file(file_name_out)
+        eT_reader.generate_file(file_name_out)
 
-        mean = MeanExcitationEnergy(file_name_ou})
+        mean = MeanExcitationEnergy(file_name_out)
 
         computed = np.array([mean.I0, mean.ln_I0])
         assert np.allclose(reference, computed)
