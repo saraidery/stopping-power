@@ -4,7 +4,7 @@ from stopping_power import eTLanczosReader
 from stopping_power import MeanExcitationEnergy
 
 eT_reader = eTLanczosReader(
-    "~/eT_testing/scr/eT.lanczos200", components=['X', 'X', 'Z']
+    "~/eT_testing/scr/eT.lanczos20", components=['Z']
 )
 eT_reader.generate_file("output")
 
